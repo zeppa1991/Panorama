@@ -2,7 +2,8 @@
 include '../Classes/Methods.php';
 $methods = new Methods();
 
-$methods->CreatePanoramaPicture();
+$methods->CreatePanoramaLeinwand();
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -14,7 +15,6 @@ $methods->CreatePanoramaPicture();
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-
 
     <title>Panorama</title>
 
@@ -80,7 +80,7 @@ $methods->CreatePanoramaPicture();
             <div class="col-lg-12 text-center">
                 <h1>Aktuelles Panoramabild</h1>
                 <p class="lead">Wird alle 5 Minuten aktualisiert!</p>
-                <img class="img-responsive img-center" src="../../Image/Panorama/Test.jpg" alt="">
+                <img class="img-responsive img-center" src="../../Image/Panorama/Panorama.jpg" alt="">
             </div>
         </div>
         <!-- /.row -->
