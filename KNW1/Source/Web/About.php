@@ -70,8 +70,23 @@
 
         <div class="row">
             <div class="col-lg-12 text-center">
+                <img src="../../Image/knwbanner.jpg">
                 <h1>Projektbeschreibung</h1>
-                <p class="lead">Hier erfahren Sie mehr über das Projekt</p>
+                <p class="lead">Das Projekt wird im Rahmen des Moduls 152 durchgefuehrt.<br><br>
+                    
+                    Ein Bergrestaurant gibt Ihnen den den Auftrag, eine Web-Applikation mit
+                    Standbildern einer Webcam zu entwickeln.<br>
+
+                    Das Panorama, welches von diesem Bergrestaurant aus zu sehen ist, ist wun-
+                    derschoen. Daher moechte der Auftraggeber moeglichst das ganze Panorama ca.
+                    180 Grad zeigen.<br>
+
+                    Dazu soll alle fuenf Minute ein Panoramabild entstehen wel-
+                    ches auf der Homepage angezeigt wird.<br>
+
+                    Ferner wuenscht der Auftraggeber ein uebersichtliches Bildarchiv mit Panoramabildern der letzten 14 Tage.<br>
+                    Aeltere Panoramabilder sollen einmal täglich geloescht werden.
+                </p>
             </div>
         </div>
         <!-- /.row -->

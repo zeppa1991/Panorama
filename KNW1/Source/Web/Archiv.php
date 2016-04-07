@@ -1,3 +1,10 @@
+<?php
+    include '../Classes/Methods.php';
+    $methods = new Methods();
+
+    $panoramaPictures = scandir('../../Image/Archiv');
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -69,124 +76,49 @@
                 <h1 class="page-header">Archiv
                     <small>Panoramabilder</small>
                 </h1>
-                <input type="datetime-local" name="day">
-                <input type="submit" name="select" value="Senden">
                 <br><br><br>
             </div>
         </div>
         <!-- /.row -->
 
         <!-- Projects Row -->
-        <div class="row">
-            <div class="col-md-4 portfolio-item">
-                <a href="../../Image/Archiv/Panorama1.jpg">
-                    <img class="img-responsive" src="../../Image/Archiv/Panorama1.jpg" alt="">
-                </a>
-            </div>
-            <div class="col-md-4 portfolio-item">
-                <a href="../../Image/Archiv/Panorama2.jpg">
-                    <img class="img-responsive" src="../../Image/Archiv/Panorama2.jpg" alt="">
-                </a>
-            </div>
-            <div class="col-md-4 portfolio-item">
-                <a href="../../Image/Archiv/Panorama3.jpg">
-                    <img class="img-responsive" src="../../Image/Archiv/Panorama3.jpg" alt="">
-                </a>
-            </div>
-        </div>
+        <?php
+        if(!empty($_GET['day']))
+        {
+            $files = $methods->SearcheForSelectedDateInFileArray($_GET['day']);
+
+            if($files == null)
+            {
+                echo '<h1>Noch keine Bilder im Archiv.</h1>';
+                echo '<br>';
+                echo '<h1>Schau dir das aktuelle Bild an.</h1>';
+            }
+            else
+            {
+                foreach ($files as $picture) {
+
+                    echo "<div class='row'>
+                    <div>
+                        <a href='../../Image/Archiv/" . $picture . "'>
+                        <img class='img-responsive' src = '../../Image/Archiv/" . $picture . "' alt=''>
+                        </a>
+                        <p>Datum: " . date("d.m.Y H:i  ", filemtime('../../Image/Archiv/' . $picture . '.')) . " </p>
+                    </div>
+                    </div>";
+                }
+            }
+        }
+        else
+        {
+            echo "<h2>Geben Sie bitte ein Datum und Uhrzeit an und clicken Sie anschliessend auf Senden.</h2>";
+        }
+        ?>
+        <br>
+        <form action="Archiv.php" method="get">
+            <input type="datetime-local" name="day">
+            <input type="submit" >
+        </form>
         <!-- /.row -->
-
-        <!-- Projects Row -->
-        <div class="row">
-            <div class="col-md-4 portfolio-item">
-                <a href="../../Image/Archiv/Panorama2.jpg">
-                    <img class="img-responsive" src="../../Image/Archiv/Panorama2.jpg" alt="">
-                </a>
-            </div>
-            <div class="col-md-4 portfolio-item">
-                <a href="../../Image/Archiv/Panorama3.jpg">
-                    <img class="img-responsive" src="../../Image/Archiv/Panorama3.jpg" alt="">
-                </a>
-            </div>
-            <div class="col-md-4 portfolio-item">
-                <a href="../../Image/Archiv/Panorama1.jpg">
-                    <img class="img-responsive" src="../../Image/Archiv/Panorama1.jpg" alt="">
-                </a>
-            </div>
-        </div>
-
-        <!-- Projects Row -->
-        <div class="row">
-            <div class="col-md-4 portfolio-item">
-                <a href="../../Image/Archiv/Panorama3.jpg">
-                    <img class="img-responsive" src="../../Image/Archiv/Panorama3.jpg" alt="">
-                </a>
-            </div>
-            <div class="col-md-4 portfolio-item">
-                <a href="../../Image/Archiv/Panorama1.jpg">
-                    <img class="img-responsive" src="../../Image/Archiv/Panorama1.jpg" alt="">
-                </a>
-            </div>
-            <div class="col-md-4 portfolio-item">
-                <a href="../../Image/Archiv/Panorama2.jpg">
-                    <img class="img-responsive" src="../../Image/Archiv/Panorama2.jpg" alt="">
-                </a>
-            </div>
-        </div>
-        <!-- /.row -->
-
-		<!-- Projects Row -->
-        <div class="row">
-            <div class="col-md-4 portfolio-item">
-                <a href="../../Image/Archiv/Panorama1.jpg">
-                    <img class="img-responsive" src="../../Image/Archiv/Panorama1.jpg" alt="">
-                </a>
-            </div>
-            <div class="col-md-4 portfolio-item">
-                <a href="../../Image/Archiv/Panorama2.jpg">
-                    <img class="img-responsive" src="../../Image/Archiv/Panorama2.jpg" alt="">
-                </a>
-            </div>
-            <div class="col-md-4 portfolio-item">
-                <a href="../../Image/Archiv/Panorama3.jpg">
-                    <img class="img-responsive" src="../../Image/Archiv/Panorama3.jpg" alt="">
-                </a>
-            </div>
-        </div>
-        <!-- /.row -->
-
-        <hr>
-
-        <!-- Pagination -->
-        <div class="row text-center">
-            <div class="col-lg-12">
-                <ul class="pagination">
-                    <li>
-                        <a href="#">&laquo;</a>
-                    </li>
-                    <li class="active">
-                        <a href="#">1</a>
-                    </li>
-                    <li>
-                        <a href="#">2</a>
-                    </li>
-                    <li>
-                        <a href="#">3</a>
-                    </li>
-                    <li>
-                        <a href="#">4</a>
-                    </li>
-                    <li>
-                        <a href="#">5</a>
-                    </li>
-                    <li>
-                        <a href="#">&raquo;</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <!-- /.row -->
-
         <hr>
 
         <!-- Footer -->
@@ -194,19 +126,23 @@
             <div class="row">
                 <div class="col-lg-12">
                     <p>Copyright &copy; Oliver Czabala</p>
+                    <ul class="list-unstyled">
+                        <li>Bootstrap v3.3.6</li>
+                        <li>jQuery v1.11.1</li>
+                    </ul>
                 </div>
             </div>
             <!-- /.row -->
         </footer>
+        <!-- jQuery Version 1.11.1 -->
+        <script src="../../js/jquery.js"></script>
 
+        <!-- Bootstrap Core JavaScript -->
+        <script src="../../js/bootstrap.min.js"></script>
     </div>
     <!-- /.container -->
 
-    <!-- jQuery -->
-    <script src="../../js/jquery.js"></script>
 
-    <!-- Bootstrap Core JavaScript -->
-    <script src="../../js/bootstrap.min.js"></script>
 
 </body>
 

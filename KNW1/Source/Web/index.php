@@ -1,9 +1,7 @@
 <?php
 include '../Classes/Methods.php';
 $methods = new Methods();
-
-$methods->CreatePanoramaLeinwand();
-
+$pictureNumber = $methods->CountFilesInArchive();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -80,7 +78,11 @@ $methods->CreatePanoramaLeinwand();
             <div class="col-lg-12 text-center">
                 <h1>Aktuelles Panoramabild</h1>
                 <p class="lead">Wird alle 5 Minuten aktualisiert!</p>
-                <img class="img-responsive img-center" src="../../Image/Panorama/Panorama.jpg" alt="">
+                <hr>
+                <?php
+                echo "<img class='img-responsive img-center' src='../../Image/Panorama/Panorama-".($pictureNumber+1).".jpg' alt=''>
+                <p>Datum: " . date("d.m.Y H:i  ", filemtime('../../Image/Panorama/Panorama-'.($pictureNumber+1).'.jpg')) . " </p>";
+                ?>
             </div>
         </div>
         <!-- /.row -->

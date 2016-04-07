@@ -1105,6 +1105,10 @@ a:focus {
   color: #23527c;
   text-decoration: underline;
 }
+@font-face{
+  font-family: "Oliver";
+  src: url("../fonts/AVENGEANCE%20HEROIC%20AVENGER.ttf");
+}
 a:focus {
   outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
@@ -1184,7 +1188,7 @@ h6,
 .h4,
 .h5,
 .h6 {
-  font-family: inherit;
+  font-family: Oliver;
   font-weight: 500;
   line-height: 1.1;
   color: inherit;
